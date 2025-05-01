@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's Web Dev Blog</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Welcome Section */
+        .welcome {
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .welcome h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .welcome p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #34495e;
+        }
+        
+        /* Featured Topics */
+        .topics {
+            margin: 40px 0;
+        }
+        
+        .topics h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .topic-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .topic-html {
+            background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .topic-css {
+            background-image: url('https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
+        }
+        
+        .topic-js {
+            background-image: url('https://images.unsplash.com/photo-1545127398-5aae47194b22?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .topic-content {
+            padding: 20px;
+        }
+        
+        .topic-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        
+        /* Quote Section */
+        aside {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        aside p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .welcome {
+                padding: 40px 20px;
+            }
+            
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <h1 class="blog-title">John's Web Dev Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Welcome Section -->
+        <section id="home" class="welcome">
+            <h2>Welcome to My Web Development Journey!</h2>
+            <p>Hello there! I'm John, a passionate web developer sharing my learning journey, tips, and insights about modern web technologies. This blog covers everything from HTML5 basics to advanced JavaScript concepts. Join me as I explore the ever-evolving world of web development!</p>
+        </section>
+        
+        <!-- Featured Topics Section -->
+        <section id="topics" class="topics">
+            <h2>Featured Topics</h2>
+            <div class="topics-grid">
+                <article class="topic-card">
+                    <div class="topic-img topic-html"></div>
+                    <div class="topic-content">
+                        <h3>HTML5</h3>
+                        <p>Explore the latest features of HTML5 including semantic elements, form validations, and multimedia capabilities that are revolutionizing modern web development.</p>
+                    </div>
+                </article>
+                
+                <article class="topic-card">
+                    <div class="topic-img topic-css"></div>
+                    <div class="topic-content">
+                        <h3>CSS Grid & Flexbox</h3>
+                        <p>Master modern layout techniques with CSS Grid and Flexbox. Learn how to create responsive, complex layouts with less code and more flexibility.</p>
+                    </div>
+                </article>
+                
+                <article class="topic-card">
+                    <div class="topic-img topic-js"></div>
+                    <div class="topic-content">
+                        <h3>JavaScript</h3>
+                        <p>Dive into JavaScript fundamentals, ES6+ features, and popular frameworks. Understand how to make your websites interactive and dynamic.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Quote Section -->
+        <aside>
+            <p>"The web is what you make of it. Whether you're building simple pages or complex applications, every line of code contributes to the digital landscape we all share."</p>
+        </aside>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2>Get In Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 John's Web Dev Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
